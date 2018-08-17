@@ -17,7 +17,7 @@ public class TaskController {
         this.taskRepository = taskRepository;
     }
 
-    @CrossOrigin
+    @CrossOrigin(origins = "*")
     @GetMapping("/all")
     public List<Task> getAll() {
         List<Task> tasks = this.taskRepository.findAll();
@@ -25,24 +25,25 @@ public class TaskController {
         return tasks;
     }
 
-    @CrossOrigin
+    @CrossOrigin(origins = "*")
     @PutMapping
     public void insert(@RequestBody Task task){
         this.taskRepository.insert(task);
     }
 
-    @CrossOrigin
+    @CrossOrigin(origins = "*")
     @PostMapping
     public void update(@RequestBody Task task){
         this.taskRepository.save(task);
     }
 
-    @CrossOrigin
+    @CrossOrigin(origins = "*")
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") String id){
         this.taskRepository.deleteById(id);
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/{id}")
     public Optional<Task> getById(@PathVariable("id") String id){
         Optional<Task> task = this.taskRepository.findById(id);
@@ -50,7 +51,7 @@ public class TaskController {
         return task;
     }
 
-    @CrossOrigin
+    @CrossOrigin(origins = "*")
     @GetMapping("/status/{status}")
     public List<Task> getByStatus(@PathVariable("status") String status){
         List<Task> list = this.taskRepository.getByStatus(status);
