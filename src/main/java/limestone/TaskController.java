@@ -17,6 +17,7 @@ public class TaskController {
         this.taskRepository = taskRepository;
     }
 
+    @CrossOrigin
     @GetMapping("/all")
     public List<Task> getAll() {
         List<Task> tasks = this.taskRepository.findAll();
@@ -24,16 +25,19 @@ public class TaskController {
         return tasks;
     }
 
+    @CrossOrigin
     @PutMapping
     public void insert(@RequestBody Task task){
         this.taskRepository.insert(task);
     }
 
+    @CrossOrigin
     @PostMapping
     public void update(@RequestBody Task task){
         this.taskRepository.save(task);
     }
 
+    @CrossOrigin
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") String id){
         this.taskRepository.deleteById(id);
@@ -46,6 +50,7 @@ public class TaskController {
         return task;
     }
 
+    @CrossOrigin
     @GetMapping("/status/{status}")
     public List<Task> getByStatus(@PathVariable("status") String status){
         List<Task> list = this.taskRepository.getByStatus(status);
