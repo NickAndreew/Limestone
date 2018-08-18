@@ -39,8 +39,12 @@ public class TaskController {
 
     @CrossOrigin(origins = "*")
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") String id){
+    public List<Task> delete(@PathVariable("id") String id){
         this.taskRepository.deleteById(id);
+
+        List<Task> tasks = this.taskRepository.findAll();
+
+        return tasks;
     }
 
     @CrossOrigin(origins = "*")
